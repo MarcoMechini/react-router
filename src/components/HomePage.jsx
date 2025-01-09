@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import Card from './Card';
 
 function HomePage() {
   const setObject = {
@@ -11,18 +10,6 @@ function HomePage() {
   //per aggiungere più campi inserire un nuovo state
   const apiUrl = 'http://localhost:3000'
 
-  useEffect(() => {
-    getPosts()
-  }, [])
-
-  const getPosts = () => {
-    axios.get(`${apiUrl}/posts`).then(response => {
-      setPost(response.data)
-      console.log(response.data);
-    })
-  }
-
-
   const sendPost = event => {
     event.preventDefault()
 
@@ -31,13 +18,6 @@ function HomePage() {
       //aggiungere il nuovo parametro ad un campo dentro l'oggetto sottostante
       setPost([...post, { title: newPost.title, content: newPost.content, image: newPost.image }])
       setNewPost(setObject)
-    })
-  }
-
-  const deletePost = (postId) => {
-    setPost(post.filter(post => post.id !== postId))
-    axios.delete(`${apiUrl}/posts/${postId}`).then(response => {
-      console.log(response.data);
     })
   }
 
@@ -96,16 +76,7 @@ function HomePage() {
           <button type="submit" className="btn btn-primary">Submit</button>
         </form>
 
-        {/* Post visualizzati */}
-        <div className="mt-4">
-          {post.length !== 0 ? (
-            post.map(curPost => (
-              <Card key={curPost.id} post={curPost} apiUrl={apiUrl} deletePost={deletePost} />
-            ))
-          ) : (
-            <p className="text-muted">Senza nulla</p>
-          )}
-        </div>
+
       </div>
 
     </>

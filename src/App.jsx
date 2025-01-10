@@ -14,8 +14,10 @@ export default function App() {
                 <Route element={<AppLayout />}>
                     <Route index element={<HomePage />} />
                     <Route path="/about" element={<AboutPage />} />
-                    <Route path="/posts" element={<PostsPage />} />
-                    <Route path="/posts/:id" element={<DetailPage />} />
+                    <Route path="/posts">
+                        <Route index element={<PostsPage />} />
+                        <Route path=":id" element={<DetailPage />} />
+                    </Route>
                 </Route>
             </Routes>
         </BrowserRouter>

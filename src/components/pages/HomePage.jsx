@@ -18,19 +18,12 @@ function HomePage() {
     axios.post(`${apiUrl}/posts`, newPost).then(response => {
 
       //aggiungere il nuovo parametro ad un campo dentro l'oggetto sottostante
-      setPost([...post, { title: newPost.title, content: newPost.content, image: newPost.image }])
+      setPost([...post, response.data])
+
       setNewPost(setObject)
-      // navigate('/posts')
-      axios.get(`${apiUrl}/posts`).then(response => {
-        const data = response.data;
-        let idMax = 0;
-        data.forEach(element => {
-          if (element.id > idMax) {
-            idMax = element.id;
-          }
-        });
-        navigate(`/posts/${idMax}`)
-      })
+      console.log(response.data);
+
+      navigate(`/posts/${response.data.id}`)
 
     })
   }

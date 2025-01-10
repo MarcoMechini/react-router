@@ -13,10 +13,6 @@ export default function AppNavList() {
         {
             path: '/posts',
             title: 'Posts'
-        },
-        {
-            path: '/posts/:id',
-            title: 'Post Detail'
         }
     ]
 

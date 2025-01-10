@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 function HomePage() {
   const setObject = {
@@ -7,6 +8,7 @@ function HomePage() {
   }
   const [post, setPost] = useState([])
   const [newPost, setNewPost] = useState(setObject)
+  const navigate = useNavigate();
   //per aggiungere più campi inserire un nuovo state
   const apiUrl = 'http://localhost:3000'
 
@@ -18,6 +20,18 @@ function HomePage() {
       //aggiungere il nuovo parametro ad un campo dentro l'oggetto sottostante
       setPost([...post, { title: newPost.title, content: newPost.content, image: newPost.image }])
       setNewPost(setObject)
+      // navigate('/posts')
+      axios.get(`${apiUrl}/posts`).then(response => {
+        const data = response.data;
+        let idMax = 0;
+        data.forEach(element => {
+          if (element.id > idMax) {
+            idMax = element.id;
+          }
+        });
+        navigate(`/posts/${idMax}`)
+      })
+
     })
   }
 

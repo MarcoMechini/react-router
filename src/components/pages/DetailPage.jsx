@@ -6,7 +6,7 @@ export default function DetailPage() {
 
     const apiUrl = 'http://localhost:3000'
     const { id } = useParams()
-    const [detailPost, setDetailPost] = useState([])
+    const [detailPost, setDetailPost] = useState({})
 
     useEffect(() => {
         axios.get(`${apiUrl}/posts/${id}`).then(response => {

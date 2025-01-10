@@ -1,4 +1,4 @@
-export default function Card({ post, apiUrl, deletePost }) {
+export default function Card({ post, apiUrl, deletePost, detailPost }) {
     return (
         <div key={post.id} className="card mb-3">
             <div className="card-body">
@@ -13,6 +13,12 @@ export default function Card({ post, apiUrl, deletePost }) {
                 >
                     Delete
                 </button>
+                <a
+                    href={`/posts/${post.id}`}
+                    className="btn btn-primary"
+                >
+                    Detail
+                </a>
             </div>
         </div>
     )

@@ -21,7 +21,6 @@ function HomePage() {
       setPost([...post, response.data])
 
       setNewPost(setObject)
-      console.log(response.data);
 
       navigate(`/posts/${response.data.id}`)
 

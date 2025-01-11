@@ -1,5 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 export default function AppNavList() {
     const navigate = useNavigate();
@@ -26,11 +25,11 @@ export default function AppNavList() {
             }
             <button onClick={() => {
                 navigate(-1);
-            }}>Precedente</button>
+            }}>&larr;</button>
 
             <button onClick={() => {
                 navigate(+1);
-            }}>Successivo</button>
+            }}>&rarr;</button>
         </nav >
     )
 

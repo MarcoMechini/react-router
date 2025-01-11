@@ -22,7 +22,7 @@ function HomePage() {
 
       setNewPost(setObject)
 
-      navigate(`/posts/${response.data.id}`)
+      navigate(`/posts/${response.data.slug}`)
 
     })
   }

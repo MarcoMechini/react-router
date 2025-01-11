@@ -1,6 +1,8 @@
 import { Link, NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 export default function AppNavList() {
+    const navigate = useNavigate();
     const navMenu = [
         {
             path: '/',
@@ -22,9 +24,13 @@ export default function AppNavList() {
                 <NavLink key={curLink.title} to={curLink.path} className='nav-link mx-3 text-white'>{curLink.title}</NavLink>
             ))
             }
-            {/* <NavLink to="/">Home</NavLink>
-            <NavLink to="/about">About</NavLink>
-            <NavLink to="/posts">Posts</NavLink> */}
+            <button onClick={() => {
+                navigate(-1);
+            }}>Precedente</button>
+
+            <button onClick={() => {
+                navigate(+1);
+            }}>Successivo</button>
         </nav >
     )
 
